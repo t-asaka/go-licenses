@@ -79,6 +79,17 @@ func TestIdentify(t *testing.T) {
 			},
 		},
 		{
+			desc:       "MIT-0 license",
+			file:       "testdata/MIT-0/LICENSE",
+			confidence: 1,
+			wantLicenses: []License{
+				{
+					Name: "MIT-0",
+					Type: Unencumbered,
+				},
+			},
+		},
+		{
 			desc:       "non-existent file",
 			file:       "non-existent-file",
 			confidence: 1,
