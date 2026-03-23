@@ -1,4 +1,4 @@
-module github.com/google/go-licenses/testdata/modules/complex
+module github.com/t-asaka/go-licenses/testdata/modules/complex
 
 go 1.19
 
