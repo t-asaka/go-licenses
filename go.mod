@@ -5,9 +5,9 @@ go 1.23.0
 require (
 	github.com/google/go-cmp v0.6.0
 	github.com/google/go-replayers/httpreplay v1.2.0
-	github.com/google/licenseclassifier/v2 v2.0.0
 	github.com/otiai10/copy v1.10.0
 	github.com/spf13/cobra v1.7.0
+	github.com/t-asaka/licenseclassifier/v2 v2.0.1
 	go.opencensus.io v0.24.0
 	golang.org/x/mod v0.27.0
 	golang.org/x/net v0.43.0
@@ -27,5 +27,3 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	golang.org/x/sys v0.35.0 // indirect
 )
-
-replace github.com/google/licenseclassifier/v2 => ../licenseclassifier/v2
