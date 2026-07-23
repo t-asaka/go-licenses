@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/google/licenseclassifier/v2/assets"
+	"github.com/t-asaka/licenseclassifier/v2/assets"
 )
 
 func TestTypes(t *testing.T) {

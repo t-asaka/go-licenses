@@ -169,6 +169,7 @@ var typeMap = map[string]Type{
 
 	"BSD-0-Clause": Unencumbered,
 	"CC0-1.0":      Unencumbered,
+	"MIT-0":        Unencumbered,
 	"Unlicense":    Unencumbered,
 
 	"AGPL-1.0":          Forbidden,
