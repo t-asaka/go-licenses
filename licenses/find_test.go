@@ -119,6 +119,15 @@ func TestFindCandidates(t *testing.T) {
 				filepath.Join(wd, "testdata/LICENSE"),
 			},
 		},
+		{
+			desc:    "REUSE LICENSES dir",
+			dir:     "testdata/reuse",
+			rootDir: "testdata/reuse",
+			wantLicensePathCandidates: []string{
+				filepath.Join(wd, "testdata/reuse/README.md"),
+				filepath.Join(wd, "testdata/reuse/LICENSES/MIT.txt"),
+			},
+		},
 	} {
 		t.Run(test.desc, func(t *testing.T) {
 			if test.rootDir == "" {

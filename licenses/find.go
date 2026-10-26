@@ -26,6 +26,8 @@ var (
 	licenseRegexp = regexp.MustCompile(`^(?i)((UN)?LICEN(S|C)E|COPYING|README|NOTICE).*$`)
 )
 
+const reuseLicensesDir = "LICENSES"
+
 // FindCandidates returns the candidate file path of the license for this package.
 //
 // dir is path of the directory where we want to find a license.
@@ -59,14 +61,33 @@ func findAllUpwards(dir string, r *regexp.Regexp, stopAt string) ([]string, erro
 			return nil, err
 		}
 
+		hasReuseLicensesDir := false
 		for _, f := range dirContents {
 			if f.IsDir() {
+				if f.Name() == reuseLicensesDir {
+					hasReuseLicensesDir = true
+				}
 				continue
 			}
 
 			if r.MatchString(f.Name()) {
 				path := filepath.Join(dir, f.Name())
 				foundPaths = append(foundPaths, path)
+			}
+		}
+
+		// REUSE (https://reuse.software/spec/) places license texts in LICENSES/<SPDX-ID>.<ext>.
+		if hasReuseLicensesDir {
+			licensesDir := filepath.Join(dir, reuseLicensesDir)
+			licensesContents, err := os.ReadDir(licensesDir)
+			if err != nil {
+				return nil, err
+			}
+			for _, f := range licensesContents {
+				if f.IsDir() {
+					continue
+				}
+				foundPaths = append(foundPaths, filepath.Join(licensesDir, f.Name()))
 			}
 		}
 
